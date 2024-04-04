@@ -35,6 +35,9 @@ const saveSettingsDebounced = debounce(function (settings, setItems) {
 			},
 			body: JSON.stringify(settings)
 		}).then((res) => console.log("res", res))
+		const { sections, ...otherSettings } = settings
+		// 存除 sections 之外的 settings
+		localStorage.setItem(SETTINGS_KEY, JSON.stringify(otherSettings))
 	} else {
 		localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings))
 	}
@@ -78,11 +81,17 @@ export const SettingsProvider = ({ children }) => {
 	// Load settings
 	useEffect(() => {
 		let data
+		let otherSettings
 
 		if (IS_DOCKER || IS_LOCAL) {
 			fetch("/api/loadSettings")
 				.then((response) => response.json())
-				.then((data) => setSettings(data))
+				.then((resData) => {
+					const { sections, ...otherResData } = resData
+					otherSettings =
+						localStorage.getItem(SETTINGS_KEY) || JSON.stringify(otherResData)
+					setSettings({ ...JSON.parse(otherSettings), sections })
+				})
 				.catch(() => setSettings(defaultConfig))
 		} else {
 			data = localStorage.getItem(SETTINGS_KEY)
