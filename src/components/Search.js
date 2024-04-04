@@ -39,7 +39,7 @@ const Search = ({ commandChange, selectionChange }) => {
 				}
 			}
 			// Auto Complete
-			else if (e.key === "ArrowRight") {
+			else if (e.key === "Tab") {
 				if (suggestion !== "") {
 					e.preventDefault()
 					inputRef.current.value = suggestion
@@ -50,7 +50,7 @@ const Search = ({ commandChange, selectionChange }) => {
 				}
 			}
 			// Previous Selection
-			else if (e.shiftKey && e.key === "Tab") {
+			else if (e.key === "ArrowUp") {
 				e.preventDefault()
 
 				if (command === "") return
@@ -67,7 +67,7 @@ const Search = ({ commandChange, selectionChange }) => {
 				selectionChange(selectedItem)
 			}
 			// Next Selection
-			else if (e.key === "Tab") {
+			else if (e.key === "ArrowDown") {
 				e.preventDefault()
 
 				if (command === "") return
