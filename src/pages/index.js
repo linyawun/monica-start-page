@@ -89,19 +89,29 @@ export default function Home() {
 				<>
 					<Meta />
 					{wallpaper && (
-						<Image
-							alt=""
-							className={`transition-opacity w-screen h-screen -z-50 object-cover
+						<>
+							<Image
+								alt=""
+								className={`transition-opacity w-screen h-screen -z-50 object-cover
 							${settings.wallpaper.easing}
 							${settings.wallpaper.fadeIn && "duration-1000"}
 							${settings.wallpaper.blur && "blur-wallpaper"}
 							${isLoaded ? "opacity-100" : "opacity-0"}`}
-							src={wallpaper}
-							fill
-							onLoad={() => {
-								setIsLoaded(true)
-							}}
-						/>
+								src={wallpaper}
+								fill
+								onLoad={() => {
+									setIsLoaded(true)
+								}}
+							/>
+							<div
+								className="absolute top-0 left-0  w-screen h-screen"
+								style={{
+									backgroundImage: `url(${wallpaper})`,
+									backgroundSize: `cover`,
+									backgroundColor: "rgba(0, 0, 0, .6)",
+									backgroundBlendMode: "multiply"
+								}}></div>
+						</>
 					)}
 					<div className={`animate-fadeIn`}>
 						<Terminal />

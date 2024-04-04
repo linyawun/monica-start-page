@@ -3,6 +3,7 @@ import defaultConfig from "data/settings"
 
 const SETTINGS_KEY = "settings"
 const IS_DOCKER = process.env.BUILD_MODE === "docker"
+const IS_LOCAL = process.env.BUILD_MODE === "local"
 
 export const SettingsContext = createContext({
 	settings: undefined,
@@ -10,6 +11,65 @@ export const SettingsContext = createContext({
 })
 
 export const useSettings = () => useContext(SettingsContext)
+
+function debounce(func, wait) {
+	let timeout
+
+	return function executedFunction(...args) {
+		const later = () => {
+			clearTimeout(timeout)
+			func(...args)
+		}
+
+		clearTimeout(timeout)
+		timeout = setTimeout(later, wait)
+	}
+}
+
+const saveSettingsDebounced = debounce(function (settings, setItems) {
+	if (IS_DOCKER || IS_LOCAL) {
+		fetch("/api/saveSettings", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(settings)
+		}).then((res) => console.log("res", res))
+	} else {
+		localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings))
+	}
+
+	let filterArr = [
+		"help",
+		"fetch",
+		"config",
+		"config help",
+		"config edit",
+		"config import",
+		"config theme",
+		"config reset"
+	]
+
+	fetch("/api/getTheme")
+		.then((response) => response.json())
+		.then((data) => {
+			if (!data.message) {
+				data.forEach((theme) => {
+					filterArr.push("config theme " + theme)
+				})
+			}
+		})
+		.catch((error) => console.log(`Error fetching themes: ${error.message}`))
+
+	settings.sections.list.map((section) => {
+		section.links.map((link) => {
+			{
+				filterArr.push(link.name.toLowerCase())
+			}
+		})
+	})
+	setItems(filterArr)
+}, 500)
 
 export const SettingsProvider = ({ children }) => {
 	const [settings, setSettings] = useState()
@@ -19,7 +79,7 @@ export const SettingsProvider = ({ children }) => {
 	useEffect(() => {
 		let data
 
-		if (IS_DOCKER) {
+		if (IS_DOCKER || IS_LOCAL) {
 			fetch("/api/loadSettings")
 				.then((response) => response.json())
 				.then((data) => setSettings(data))
@@ -36,48 +96,7 @@ export const SettingsProvider = ({ children }) => {
 	// Save settings
 	useEffect(() => {
 		if (settings && settings !== "undefined") {
-			if (IS_DOCKER) {
-				fetch("/api/saveSettings", {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json"
-					},
-					body: JSON.stringify(settings)
-				})
-			} else {
-				localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings))
-			}
-
-			let filterArr = [
-				"help",
-				"fetch",
-				"config",
-				"config help",
-				"config edit",
-				"config import",
-				"config theme",
-				"config reset"
-			]
-
-			fetch("/api/getTheme")
-				.then((response) => response.json())
-				.then((data) => {
-					if (!data.message) {
-						data.forEach((theme) => {
-							filterArr.push("config theme " + theme)
-						})
-					}
-				})
-				.catch((error) => console.log(`Error fetching themes: ${error.message}`))
-
-			settings.sections.list.map((section) => {
-				section.links.map((link) => {
-					{
-						filterArr.push(link.name.toLowerCase())
-					}
-				})
-			})
-			setItems(filterArr)
+			saveSettingsDebounced(settings, setItems)
 		}
 	}, [settings])
 
