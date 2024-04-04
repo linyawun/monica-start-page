@@ -1,7 +1,7 @@
 import { sql } from "@vercel/postgres"
 import { unstable_noStore as noStore } from "next/cache"
 
-export async function fetchCategoriesWithLinks() {
+export async function fetchCategoriesAndLinks() {
 	noStore()
 	try {
 		const categoriesData = await sql`

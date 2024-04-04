@@ -1,6 +1,6 @@
 import fs from "fs"
 import path from "path"
-import { fetchCategoriesWithLinks } from "@/lib/data"
+import { fetchCategoriesAndLinks } from "@/lib/data"
 
 // export default function handler(req, res) {
 // 	const filePath = path.join(process.cwd(), "data", "settings.json")
@@ -10,7 +10,7 @@ import { fetchCategoriesWithLinks } from "@/lib/data"
 
 export default async function handler(req, res) {
 	try {
-		const list = await fetchCategoriesWithLinks()
+		const list = await fetchCategoriesAndLinks()
 
 		const filePath = path.join(process.cwd(), "data", "settings.json")
 		const fileContents = fs.readFileSync(filePath, "utf8")

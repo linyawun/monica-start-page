@@ -28,8 +28,28 @@ const Editor = () => {
 	const handleSave = () => {
 		const val = editor.current.editor.getValue()
 		try {
-			const data = JSON.parse(val)
-			setSettings(data)
+			const newData = JSON.parse(val)
+			// 检查每个 section 的 id 和每个 link 的 id 是否保持不变
+			const idsAreUnchanged = newData.sections.list.every((newSection, sectionIndex) => {
+				const originalSection = settings.sections.list[sectionIndex]
+				if (!originalSection || newSection.id !== originalSection.id) {
+					return false
+				}
+
+				// 检查 links 数组中的每个对象的 id
+				return newSection.links.every((newLink, linkIndex) => {
+					const originalLink = originalSection.links[linkIndex]
+					return originalLink && newLink.id === originalLink.id
+				})
+			})
+
+			if (!idsAreUnchanged) {
+				setError(true)
+				alert("You cannot change the id values of lists or links.")
+				return
+			}
+
+			setSettings(newData)
 			setError(false)
 		} catch (e) {
 			setError(true)
