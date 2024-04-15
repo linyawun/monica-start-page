@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react"
-import Image from "next/image"
 import Meta from "@/components/Meta"
 import Terminal from "@/components/Terminal"
-import "@fontsource/fira-code/400.css"
-import "@fontsource/fira-code/600.css"
 import { useSettings } from "@/context/settings"
 import { fetchAsset } from "@/utils/fetchAsset"
+import "@fontsource/fira-code/400.css"
+import "@fontsource/fira-code/600.css"
+import Image from "next/image"
+import { useEffect, useState } from "react"
 
 export default function Home() {
 	const { settings } = useSettings()
@@ -103,14 +103,14 @@ export default function Home() {
 									setIsLoaded(true)
 								}}
 							/>
-							<div
+							{/* <div
 								className="absolute top-0 left-0  w-screen h-screen"
 								style={{
 									backgroundImage: `url(${wallpaper})`,
 									backgroundSize: `cover`,
 									backgroundColor: "rgba(0, 0, 0, .6)",
 									backgroundBlendMode: "multiply"
-								}}></div>
+								}}></div> */}
 						</>
 					)}
 					<div className={`animate-fadeIn`}>

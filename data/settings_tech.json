@@ -1,0 +1,313 @@
+{
+	"username": "Tech",
+	"theme": {
+		"name": "Default",
+		"backgroundColor": "#121317",
+		"windowColor": "#1e212b",
+		"textColor": "#e2e2e2",
+		"black": "#16161e",
+		"red": "#ec6183",
+		"green": "#2ed8a2",
+		"yellow": "#e8b195",
+		"blue": "#2bc3de",
+		"magenta": "#d1aff8",
+		"cyan": "#62e0e2",
+		"white": "#e2e2e2",
+		"gray": "#97989d"
+	},
+	"wallpaper": {
+		"url": "assets/default-wallpaper.svg",
+		"easing": "ease-in-out",
+		"fadeIn": true,
+		"blur": false
+	},
+	"terminal": {
+		"fixedHeight": true,
+		"windowGlow": true,
+		"windowGlowColor": "#291f3325",
+		"textGlow": false,
+		"opacity": 0,
+		"blur": 16
+	},
+	"prompt": {
+		"ctrlC": true,
+		"placeholder": "command...",
+		"placeholderColor": "gray",
+		"userColor": "green",
+		"atColor": "gray",
+		"hostColor": "magenta",
+		"promptColor": "magenta",
+		"promptSymbol": "❯",
+		"caretColor": "green",
+		"selectionBg": "yellow",
+		"selectionFg": "black"
+	},
+	"fetch": {
+		"timeFormat": "HH:mm",
+		"dateFormat": "DD/MM/YYYY",
+		"titleColor": "yellow",
+		"image": "assets/default-icon.svg",
+		"data": [
+			"Time: {time}",
+			"Date: {date}",
+			"{seperator}",
+			"OS: {osName} {osVersion}",
+			"Theme: {theme}",
+			"{seperator}",
+			"Browser: {browser} {browserVersion}",
+			"Engine: {engineName}",
+			"{seperator}",
+			"{colors}"
+		]
+	},
+	"urlLaunch": {
+		"target": "_blank",
+		"hoverColor": "magenta"
+	},
+	"search": {
+		"default": "https://google.com/search?q=",
+		"target": "_blank",
+		"shortcutRegex": "([A-Za-z0-9]+) (.*)",
+		"shortcuts": [
+			{
+				"alias": "g",
+				"name": "Google Search",
+				"url": "https://google.com/search?q={}"
+			},
+			{
+				"alias": "d",
+				"name": "DuckDuckGo Search",
+				"url": "https://duckduckgo.com/?q={}"
+			},
+			{
+				"alias": "b",
+				"name": "Brave Search",
+				"url": "https://search.brave.com/search?q={}"
+			},
+			{
+				"alias": "gh",
+				"name": "Github Search",
+				"url": "https://github.com/search?q={}"
+			},
+			{
+				"alias": "s",
+				"name": "Stack Overflow Search",
+				"url": "https://stackoverflow.com/search?q={}"
+			},
+			{
+				"alias": "r",
+				"name": "Subreddit Search",
+				"url": "https://reddit.com/r/{}"
+			},
+			{
+				"alias": "w",
+				"name": "Wikipedia Search",
+				"url": "https://en.wikipedia.org/wiki/{}"
+			}
+		]
+	},
+	"sections": {
+		"list": [
+			{
+				"title": "Production",
+				"color": "green",
+				"align": "left",
+				"links": [
+					{
+						"name": "SEP",
+						"url": "https://sep.adgeek.net/",
+						"icon": "mdi:web"
+					},
+					{
+						"name": "A.I Optimization",
+						"url": "https://aiopt.atelli.ai/",
+						"icon": "mdi:web"
+					},
+					{
+						"name": "CI-BOT",
+						"url": "http://cibot.adgeek.net/",
+						"icon": "mdi:web"
+					},
+					{
+						"name": "Elixir",
+						"url": "https://elixir.cyntellitech.com",
+						"icon": "mdi:web"
+					},
+					{
+						"name": "Shortlink",
+						"url": "https://ilnk.io",
+						"icon": "mdi:web"
+					},
+					{
+						"name": "Leads",
+						"url": "http://leads.cyntelli.com",
+						"icon": "mdi:web"
+					},
+					{
+						"name": "Hi-Yes",
+						"url": "https://hi-yes.cyntelli.com/reports",
+						"icon": "mdi:web"
+					},
+					{
+						"name": "APIs & Docs & Devs",
+						"url": "https://developers.cyntelli.com",
+						"icon": "mdi:web"
+					},
+					{
+						"name": "LIFF",
+						"url": "https://liff.cyntellitech.com/",
+						"icon": "mdi:web"
+					},
+					{
+						"name": "Cyntelli DataHub",
+						"url": "https://datahub.cyntelli.com",
+						"icon": "mdi:web"
+					},
+					{
+						"name": "Console",
+						"url": "https://console.cyntellitech.com",
+						"icon": "mdi:web"
+					}
+				]
+			},
+			{
+				"title": "Internal",
+				"color": "magenta",
+				"align": "left",
+				"links": [
+					{
+						"name": "Gitlab",
+						"url": "https://gitlab.cyntellitech.org/",
+						"icon": "mdi:web"
+					},
+					{
+						"name": "Zen&Tao",
+						"url": "https://pm.cyntelli.com/",
+						"icon": "mdi:web"
+					},
+					{
+						"name": "YAPI",
+						"url": "https://yapi.adgeek.net/",
+						"icon": "mdi:web"
+					},
+					{
+						"name": "Drone",
+						"url": "https://drone.cyntellitech.org",
+						"icon": "mdi:web"
+					},
+					{
+						"name": "Postal",
+						"url": "https://postal.adgeek.net/",
+						"icon": "mdi:web"
+					},
+					{
+						"name": "Harbor",
+						"url": "https://ccr.cyntellitech.com",
+						"icon": "mdi:web"
+					},
+					{
+						"name": "Apache NiFi",
+						"url": "https://nifi-beta.adgeek.net/nifi/",
+						"icon": "mdi:web"
+					},
+					{
+						"name": "Cyntellitech DataHub",
+						"url": "https://datahub-superset.cyntellitech.com/",
+						"icon": "mdi:web"
+					},
+					{
+						"name": "SEP dev",
+						"url": "https://sepv3-dev.cyntelli.com/",
+						"icon": "mdi:web"
+					},
+					{
+						"name": "db",
+						"url": "https://db.cyntellitech.com",
+						"icon": "mdi:web"
+					},
+					{
+						"name": "SEP",
+						"url": "https://sep-stage.cyntellitech.com",
+						"icon": "mdi:web"
+					},
+					{
+						"name": "CRM File Manager",
+						"url": "https://huck.cyntellitech.com/fm",
+						"icon": "mdi:web"
+					}
+				]
+			},
+			{
+				"title": "Log System",
+				"color": "cyan",
+				"align": "left",
+				"links": [
+					{
+						"name": "OpenDistro",
+						"url": "http://log.cyntellitech.com:5601/",
+						"icon": "mdi:web"
+					},
+					{
+						"name": "Real Time Logs",
+						"url": "http://dmp-es-log.cyntellitech.com:5601",
+						"icon": "mdi:web"
+					},
+					{
+						"name": "Metrics",
+						"url": "https://metrics-dashboard.cyntellitech.com",
+						"icon": "mdi:web"
+					}
+				]
+			},
+			{
+				"title": "Queue System",
+				"color": "red",
+				"align": "left",
+				"links": [
+					{
+						"name": "RabbitMQ-bot-stage",
+						"url": "http://13.231.175.187:30672/#/queues",
+						"icon": "mdi:web"
+					},
+					{
+						"name": "RabbitMQ-bot-prod",
+						"url": "http://c5-rabbitmq.adgeek.net:15672/#/queues",
+						"icon": "mdi:web"
+					}
+				]
+			},
+			{
+				"title": "A.I Optimization",
+				"color": "blue",
+				"align": "left",
+				"links": [
+					{
+						"name": "AIOPT-Stage",
+						"url": "https://aiopt-stage.atelli.ai",
+						"icon": "mdi:web"
+					},
+					{
+						"name": "AIOPT-Dev",
+						"url": "http://aiopt-dev.atelli.ai",
+						"icon": "mdi:web"
+					},
+					{
+						"name": "AIOPT-Manager",
+						"url": "https://api.atelli.ai/manager",
+						"icon": "mdi:web"
+					},
+					{
+						"name": "AIOPT-Manager Stage",
+						"url": "https://api-stage.atelli.ai/manager",
+						"icon": "mdi:web"
+					},
+					{
+						"name": "AIOPT-Manager Dev",
+						"url": "https://api-dev.atelli.ai/manager",
+						"icon": "mdi:web"
+					}
+				]
+			}
+		]
+	}
+}

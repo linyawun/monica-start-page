@@ -1,7 +1,7 @@
-import React, { use, useEffect, useState } from "react"
 import Link from "@/components/Link"
 import Search from "@/components/Search"
 import { useSettings } from "@/context/settings"
+import { useState } from "react"
 
 const Section = ({ section, filter, selection }) => {
 	const alignment = section.align || "left"
@@ -45,17 +45,19 @@ const List = () => {
 
 	return (
 		<div id="list">
-			<div className="grid grid-cols-3 gap-4 px-3 py-2 mb-5">
-				{settings.sections.list.map((section, index) => {
-					return (
-						<Section
-							key={index}
-							section={section}
-							filter={command}
-							selection={selection}
-						/>
-					)
-				})}
+			<div className="scroll-bar overflow-auto max-h-96">
+				<div className="grid grid-cols-3 gap-4 px-3 py-2 mb-5 ">
+					{settings.sections.list.map((section, index) => {
+						return (
+							<Section
+								key={index}
+								section={section}
+								filter={command}
+								selection={selection}
+							/>
+						)
+					})}
+				</div>
 			</div>
 			<Search commandChange={handleCommandChange} selectionChange={handleSelectionChange} />
 		</div>

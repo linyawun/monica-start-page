@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useRef } from "react"
-import AceEditor from "react-ace"
+import { useSettings } from "@/context/settings"
 import "ace-builds/src-noconflict/mode-json"
 import "one-theme-ace/one-dark"
-import { useSettings } from "@/context/settings"
+import { useEffect, useRef, useState } from "react"
+import AceEditor from "react-ace"
 
 const Editor = () => {
 	const editor = useRef(null)

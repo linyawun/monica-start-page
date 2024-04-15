@@ -2,7 +2,7 @@
 module.exports = {
 	content: ["./src/**/*.{js,ts,jsx,tsx}"],
 	darkMode: ["class", '[data-mode="dark"]'],
-	// important: true,
+	important: true,
 	theme: {
 		fontFamily: {
 			mono: ["FiraCode", "ui-monospace", "SFMono-Regular"]
@@ -63,7 +63,7 @@ module.exports = {
 			})
 		}
 	},
-	plugins: [],
+	plugins: [require("tailwind-scrollbar")({ nocompatible: true })],
 	safelist: [
 		"background-color",
 		"window-color",

@@ -1,5 +1,5 @@
+import defaultConfig from "data/settings_tech.json"
 import { createContext, useContext, useEffect, useState } from "react"
-import defaultConfig from "data/settings"
 
 const SETTINGS_KEY = "settings"
 const IS_DOCKER = process.env.BUILD_MODE === "docker"
